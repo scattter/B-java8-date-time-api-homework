@@ -12,11 +12,11 @@ import java.time.ZoneOffset;
 public class Practice1 {
 
     public static long getDaysBetweenNextLaborDay(LocalDate date) {
-        int targeMonth = 5;
+        int targetMonth = 5;
         int targetDay = 1;
         int timeStampToDayUnit = 1000 * 3600 * 24;
-        int targetYear = date.getMonthValue() > targeMonth - 1 ? date.getYear() + 1 : date.getYear();
-        LocalDate targetDate = LocalDate.of(targetYear, targeMonth, targetDay);
+        int targetYear = date.getMonthValue() > targetMonth - 1 ? date.getYear() + 1 : date.getYear();
+        LocalDate targetDate = LocalDate.of(targetYear, targetMonth, targetDay);
         long dateTimeStamp = date.atStartOfDay(ZoneOffset.ofHours(8)).toInstant().toEpochMilli();
         long targetTimeStamp = targetDate.atStartOfDay(ZoneOffset.ofHours(8)).toInstant().toEpochMilli();
         long day = (targetTimeStamp - dateTimeStamp) / timeStampToDayUnit;
