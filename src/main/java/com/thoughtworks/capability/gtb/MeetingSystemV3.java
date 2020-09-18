@@ -38,9 +38,8 @@ public class MeetingSystemV3 {
 
         LocalDateTime now = LocalDateTime.now();
         if (now.isAfter(meetingTime)) {
-            LocalDateTime tomorrow = now.plusDays(1);
-            int newDayOfYear = tomorrow.getDayOfYear();
-            meetingTime = meetingTime.withDayOfYear(newDayOfYear);
+            Period period = Period.between(meetingTime.toLocalDate(),now.toLocalDate()).plusDays(1);
+            meetingTime = meetingTime.plus(period);
 
             // 转换为芝加哥时区时间
             LocalDateTime newZoneDateTime = meetingTime.atZone(nowZone)
