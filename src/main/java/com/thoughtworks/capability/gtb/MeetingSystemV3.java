@@ -2,10 +2,7 @@ package com.thoughtworks.capability.gtb;
 
 import com.sun.corba.se.impl.encoding.CDROutputObject;
 
-import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 
 /**
@@ -32,6 +29,7 @@ public class MeetingSystemV3 {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         // 从字符串解析得到会议时间
         LocalDateTime meetingTime = LocalDateTime.parse(timeStr, formatter);
+
 
         // 转换为北京时区的会议时间
         meetingTime = meetingTime.atZone(oldZone)
